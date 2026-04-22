@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ferretería Industrial Nevada: Más de 20.000 referencias para industria y construcción. Soluciones que maximizan su productividad y rentabilidad.">
+    <title>Ferretería Industrial Nevada | Soluciones para Industria y Negocios</title>
+    <style>
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --primary: #FFD700; /* Oro/Nevada - Evoca construcción y premium */
+            --primary-hover: #E6C200;
+            --dark: #111111; /* Negro profundo - Elegancia industrial */
+            --dark-grey: #1A1A1A;
+            --light-grey: #F4F4F4;
+            --text-main: #FFFFFF;
+            --text-muted: #B0B0B0;
+            --accent-blue: #0056b3; /* Confianza técnica */
+            --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-body: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --spacing-section: 80px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: --font-body; background-color: var(--dark); color: var(--text-main); line-height: 1.6; }
+        
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 700; letter-spacing: -0.5px; line-height: 1.2; }
+        h1 { font-size: 3rem; margin-bottom: 20px; }
+        h2 { font-size: 2.5rem; margin-bottom: 15px; color: var(--text-main); }
+        h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--primary); }
+        p { margin-bottom: 20px; color: var(--text-muted); font-size: 1.1rem; }
+        strong { color: var(--text-main); }
+        
+        /* --- UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .text-center { text-align: center; }
+        .btn { display: inline-block; padding: 16px 32px; font-weight: 700; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: all 0.3s ease; cursor: pointer; font-size: 1rem; border: none; }
+        .btn-primary { background-color: var(--primary); color: var(--dark); }
+        .btn-primary:hover { background-color: var(--primary-hover); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2); }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: var(--dark); }
+        .section-padding { padding: var(--spacing-section) 0; }
+        
+        /* --- HEADER --- */
+        header { background-color: rgba(17, 17, 17, 0.95); backdrop-filter: blur(10px); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo img { height: 50px; width: auto; } /* Asset injection zone */
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .cta-header { display: none; }
+        
+        /* --- HERO SECTION --- */
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://lh3.googleusercontent.com/p/AF1QipPsf8jVzIUNCuWSXVyuzZaxc6pWz4nASxGIxcLD=s1360-w1360-h1020-rw'); 
+            background-size: cover; 
+            background-position: center; 
+            display: flex; 
+            align-items: center; 
+            position: relative;
+        }
+        .hero-content { max-width: 800px; padding-top: 60px; }
+        .hero-tag { background-color: var(--accent-blue); color: white; padding: 5px 10px; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; display: inline-block; margin-bottom: 15px; }
+        
+        /* --- PAIN POINTS --- */
+        .pain-points { background-color: var(--dark-grey); }
+        .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .pain-card { padding: 30px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .pain-card:hover { border-color: var(--primary); }
+        .pain-icon { font-size: 2rem; color: var(--primary); margin-bottom: 15px; display: block; }
+        
+        /* --- SOLUTION / SERVICES --- */
+        .services { background-color: var(--dark); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .service-card { position: relative; overflow: hidden; group; }
+        .service-img { width: 100%; height: 250px; object-fit: cover; margin-bottom: 20px; border-radius: 4px; filter: grayscale(20%); transition: 0.3s; }
+        .service-card:hover .service-img { filter: grayscale(0%); transform: scale(1.02); }
+        
+        /* --- AUTHORITY / TRUST --- */
+        .trust { background-color: var(--light-grey); color: var(--dark); }
+        .trust h2 { color: var(--dark); }
+        .trust p { color: #555; }
+        .stats-container { display: flex; justify-content: space-around; flex-wrap: wrap; margin-bottom: 50px; gap: 20px; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 3.5rem; font-weight: 800; color: var(--accent-blue); display: block; }
+        .stat-label { text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; font-weight: 600; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
+        .gallery-img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; transition: transform 0.3s; }
+        .gallery-img:hover { transform: scale(1.05); }
+
+        /* --- CONTACT / BOFU --- */
+        .contact { background: linear-gradient(to right, #111111 50%, #1A1A1A 50%); }
+        .contact-layout { display: flex; flex-wrap: wrap; }
+        .contact-info { flex: 1; padding: 40px; min-width: 300px; }
+        .contact-form-wrapper { flex: 1; padding: 40px; background-color: white; color: var(--dark); min-width: 300px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
+        .form-group textarea { height: 120px; resize: vertical; }
+        .form-submit { width: 100%; background-color: var(--dark); color: var(--primary); border: none; }
+        .form-submit:hover { background-color: #000; color: white; }
+
+        /* --- FOOTER --- */
+        footer { background-color: #000; padding: 40px 0; border-top: 1px solid #222; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-col h4 { color: var(--text-main); margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary); }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            .nav-links { display: none; } /* Simplified for prototype */
+            .cta-header { display: block; }
+            .hero { background-position: 70% center; }
+            .contact { background: var(--light-grey); } /* Stack on mobile */
+            .contact-form-wrapper { background: #f9f9f9; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <!-- Asset Injection: Logo (Simulated text if image fails, strictly using placeholder provided URL logic) -->
+                <img src="https://www.ferreteria-nevada.com/wp-content/uploads/2016/05/logo-25-aniversario-ferreteria-nevada.jpg" alt="Ferretería Industrial Nevada - Logo 25 Años" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+                <div style="display:none; font-weight:bold; color:white; font-size:1.5rem;">NEVADA 25</div>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#servicios">Soluciones Industriales</a></li>
+                    <li><a href="#por-que-nevada">Por Qué Nosotros</a></li>
+                    <li><a href="#galeria">Instalaciones</a></li>
+                    <li><a href="#contacto" style="color:var(--primary);">Cotizar Ahora</a></li>
+                </ul>
+                <div class="cta-header">
+                    <a href="#contacto" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">Cotizar</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section: Emocional + Promesa -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="hero-tag">Expertos en Industriales y Hogar</span>
+            <h1>Su socio estratégico para la productividad y rentabilidad de su negocio.</h1>
+            <p>Más de 20.000 referencias en stock. No vendemos herramientas, entregamos continuidad operativa.</p>
+            <div style="margin-top: 30px;">
+                <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto Express</a>
+                <a href="#servicios" class="btn btn-outline" style="margin-left: 15px;">Ver Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain / Agitation Section: Empatía -->
+    <section class="section-padding pain-points">
+        <div class="container">
+            <h2 class="text-center">¿Le suena familiar?</h2>
+            <p class="text-center">Los costos ocultos de una mala gestión de suministros.</p>
+            
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <span class="pain-icon">⏱️</span>
+                    <h3>Pérdida de Tiempo</h3>
+                    <p>Buscar refacciones en 3 o 4 proveedores diferentes le roba horas valiosas a su equipo de producción.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">📉</span>
+                    <h3>Paros de Planta</h3>
+                    <p>El proveedor "mañana" no existe en la industria. Un faltante le cuesta miles de euros por hora de inactividad.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="pain-icon">🤷</span>
+                    <h3>Falta de Asesoría</h3>
+                    <p>Comprar en cadenas genéricas significa no tener a nadie que entienda la necesidad técnica específica de su proyecto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services: Beneficio-Driven -->
+    <section id="servicios" class="section-padding services">
+        <div class="container">
+            <h2>Soluciones que Generan Valor</h2>
+            <p>Servicios especializados diseñados para maximizar su eficiencia.</p>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFuwdSWijVdSjo3oW-T_QxtUAxGe5n1AuCXnv7Br-DwylQgGDhsC4T0NUmbXEpI9um6YrBXU5fxEYN9AHkFbuvPJCXstdYhb8Z9YwCedA_9OaS7nPuG0K2ySYpWKUJ4gVk_0Zl5=s1360-w1360-h1020-rw" alt="Suministro Industrial" class="service-img">
+                    <h3>Suministro Integral</h3>
+                    <p>Desde herramientas manuales hasta maquinaria pesada. Centralice sus compras con un proveedor que garantiza stock.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAAGngO4ZmjLqNf6T7kMnAwMK8EVCXU0WHprILg_nnL3FA22RXCb4bp1V4K-XAVZHTyTMew5N8Gm3IZ9ZSIE8ggcm3h5QL0B8mngwghGXj6mHRIFZLBZmo4jeNJ54a4R0c7JEWWDRoQ=s1360-w1360-h1020-rw" alt="Servicios Especializados" class="service-img">
+                    <h3>Servicios Especializados</h3>
+                    <p>Corte de materiales, fabricación de llaves especiales y logística adaptada a su obra o instalación.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipMM9ofzyJ6c59JSZu4eM1SlnvctY5fmemCbG7KH=s1360-w1360-h1020-rw" alt="Atención al Negocio" class="service-img">
+                    <h3>Atención a Empresas</h3>
+                    <p>Créditos comerciales y cuentas corporativas diseñadas para agilizar sus pagos y administraciones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Authority / Trust / Social Proof -->
+    <section id="por-que-nevada" class="section-padding trust">
+        <div class="container">
+            <h2 class="text-center">La Capacidad Logística de un Gigante, el Trato de un Local</h2>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number">20k+</span>
+                    <span class="stat-label">Referencias</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">25</span>
+                    <span class="stat-label">Años de Experiencia</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Compromiso</span>
+                </div>
+            </div>
+
+            <h3 class="text-center" style="color:var(--dark); margin-bottom:20px;">Nuestras Instalaciones (Prueba de Stock)</h3>
+            <p class="text-center">No mostramos fotos de banco de imágenes. Esto es lo que tenemos hoy en almacén.</p>
+            
+            <div class="gallery-grid">
+                <!-- Asset Injection: Visual proof from provided assets -->
+                <img src="https://lh3.googleusercontent.com/p/AF1QipPsf8jVzIUNCuWSXVyuzZaxc6pWz4nASxGIxcLD=s1360-w1360-h1020-rw" class="gallery-img" alt="Almacén Nevada 1">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipNXcRaanMPLBd3Up5wVdq5shFPzkEksx0Yb1N_K=s1360-w1360-h1020-rw" class="gallery-img" alt="Almacén Nevada 2">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAE76KyCGlt6qOodphmuwin-hm0VQd3hwYwFZ3CBfT71pv9eATnnDdPzf5fnmTdS6KSPmUTlk7RB3uVFWlp30bKEI6Zw5zvntG3RLiyhSpHal1kAtXRToaR5DI1nX9ascS_Sn98=s1360-w1360-h1020-rw" class="gallery-img" alt="Almacén Nevada 3">
+                <img src="https://lh3.googleusercontent.com/p/AF1QipNDXBNDc6OHLt4ke5sqpsUX_j7cRg-ySq415BQg=s1360-w1360-h1020-rw" class="gallery-img" alt="Almacén Nevada 4">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (Objection Handling) -->
+    <section class="section-padding" style="background-color: var(--dark);">
+        <div class="container">
+            <h2 class="text-center">Preguntas Frecuentes</h2>
+            <div style="max-width: 800px; margin: 30px auto;">
+                <details style="margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                    <summary style="cursor: pointer; font-weight: 700; font-size: 1.1rem; color: var(--primary);">¿Realmente tienen todo en stock?</summary>
+                    <p style="margin-top: 10px;">Contamos con 20.000 referencias. En el improbable caso de no tenerlo, lo gestionamos con nuestros proveedores prioritarios en 24/48h.</p>
+                </details>
+                <details style="margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                    <summary style="cursor: pointer; font-weight: 700; font-size: 1.1rem; color: var(--primary);">¿Atienden solo a grandes empresas o a particulares?</summary>
+                    <p style="margin-top: 10px;">Somos especialistas en industria y negocio, pero cualquier profesional o particular puede comprar y disfrutar de nuestra asesoría.</p>
+                </details>
+                <details style="margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                    <summary style="cursor: pointer; font-weight: 700; font-size: 1.1rem; color: var(--primary);">¿Hacen envíos a obra?</summary>
+                    <p style="margin-top: 10px;">Sí, disponemos de logística propia para entregas urgentes y colaboramos con mensajería urgente para el resto de zonas.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOFU Conversion Section -->
+    <section id="contacto" class="section-padding contact">
+        <div class="contact-layout">
+            <div class="contact-info">
+                <h2>Deje de perder tiempo buscando.</h2>
+                <p>Díganos qué necesita para su proyecto o mantenimiento. Rápidamente le daremos una solución y presupuesto.</p>
+                
+                <div style="margin-top: 40px;">
+                    <h4 style="color:var(--primary);">📍 Visítenos</h4>
+                    <p style="margin-bottom: 5px; color:#ccc;">Polígono Industrial...</p> <!-- Placeholder address -->
+                    
+                    <h4 style="color:var(--primary); margin-top: 20px;">📞 Línea de Pedidos</h4>
+                    <p style="margin-bottom: 5px; color:#ccc;">+34 900 000 000</p>
+                    
+                    <h4 style="color:var(--primary); margin-top: 20px;">📧 Email Comercial</h4>
+                    <p style="margin-bottom: 5px; color:#ccc;">comercial@ferreteria-nevada.com</p>
+                </div>
+            </div>
+            
+            <div class="contact-form-wrapper">
+                <h3 style="color:var(--dark); margin-bottom: 20px;">Solicitud de Presupuesto</h3>
+                <form onsubmit="event.preventDefault(); alert('Gracias. En una implementación real, esto enviaría los datos directamente al email comercial o CRM.');">
+                    <div class="form-group">
+                        <label for="name">Nombre / Empresa</label>
+                        <input type="text" id="name" placeholder="Ej. Construcciones S.L. - Juan Pérez" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email de Contacto</label>
+                        <input type="email" id="email" placeholder="juan@empresa.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Tipo de Servicio</label>
+                        <select id="type">
+                            <option>Suministro General</option>
+                            <option>Servicio Técnico / Corte</option>
+                            <option>Urgencia / Mantenimiento</option>
+                            <option>Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Detalles de la necesidad</label>
+                        <textarea id="message" placeholder="Necesito presupuesto para... (Especifique materiales o refacciones si las sabe)" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">Enviar Solicitud</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <img src="https://www.ferreteria-nevada.com/wp-content/uploads/2016/05/logo-25-aniversario-ferreteria-nevada.jpg" alt="Nevada Logo" style="max-width: 150px; margin-bottom: 20px; opacity: 0.8;">
+                <p style="font-size: 0.9rem;">Ferretería Industrial Nevada. Más de 25 años impulsando la industria y el hogar.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Industrial</a></li>
+                    <li><a href="#">Construcción</a></li>
+                    <li><a href="#">Hogar y Jardín</a></li>
+                    <li><a href="#">Servicios Técnicos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 40px; border-top: 1px solid #222; padding-top: 20px;">
+            <p style="font-size: 0.8rem;">&copy; 2024 Ferretería Industrial Nevada. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JS for Mobile Menu Toggle (Simple implementation) -->
+    <script>
+        // Placeholder for basic interactivity
+        console.log("System Loaded: Ferreteria Nevada V2 - Sales Machine Ready");
+    </script>
+</body>
+</html>
